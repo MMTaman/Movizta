@@ -922,7 +922,7 @@ export default {
                 .watchon {
                     // background-color: red;
                     font-weight: 600;
-                    color: $primary;
+                    color: $secondary;
                     margin: 5px;
 
                     span {
