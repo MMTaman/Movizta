@@ -1,30 +1,51 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+      <router-view :key="$route.fullPath" />
 </template>
+<script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+export default {
+      components: {},
+      data() {
+            return {
+            };
+      },
+      beforeMount() {
+        //Categories
+        fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=027ef6b5c80761ceecd553242c390211&language=en-US`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => console.log(err));
+      },
 
-nav {
-  padding: 30px;
-}
+      methods: {
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+      },
+};
+</script>
 
-nav a.router-link-exact-active {
-  color: #42b983;
+<style lang="scss">
+body {
+      background-color: $bgColor;
+      color: $secondary;
+      font-family: "Ubuntu", sans-serif;
+      margin: 0;
+
+      &::-webkit-scrollbar {
+            width: 10px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+            background: $primary;
+            border-radius: 5px;
+      }
+
+      // height: 2000px;
+      a {
+            text-decoration: none;
+            color: $secondary;
+      }
 }
 </style>
